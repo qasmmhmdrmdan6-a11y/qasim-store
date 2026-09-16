@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* ============================================================
+   QASIM Store — Design Tokens
+   Direction: Dark Luxury Beauty. Warm antique-gold accent on
+   near-black ink, restrained rose accent reserved for sale/love.
+   ============================================================ */
+@theme {
+  /* Surfaces */
+  --color-ink: #0a0a0c;          /* page background */
+  --color-surface: #141217;      /* cards, panels */
+  --color-surface-2: #1d1a20;    /* raised panels, inputs */
+  --color-surface-border: #2a2630;
+
+  /* Text */
+  --color-ivory: #f4efe8;        /* primary text on dark */
+  --color-ivory-muted: #b8b0a8;  /* secondary text */
+  --color-ivory-faint: #756e68;  /* tertiary / placeholders */
+
+  /* Accents */
+  --color-gold: #b9975b;         /* primary accent — CTAs, prices, borders */
+  --color-gold-bright: #d4b783;  /* hover state */
+  --color-rose: #c98ba3;         /* secondary accent — sale badges, wishlist */
+  --color-success: #7fae82;
+  --color-danger: #c1614f;
+
+  /* Fonts */
+  --font-display: 'Fraunces', 'Amiri', ui-serif, serif;
+  --font-display-ar: 'Amiri', 'Fraunces', ui-serif, serif;
+  --font-body: 'Inter', 'Cairo', ui-sans-serif, sans-serif;
+  --font-body-ar: 'Cairo', 'Inter', ui-sans-serif, sans-serif;
+
+  /* Radius */
+  --radius-card: 0.375rem;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-ivory);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+html[lang="ar"] body {
+  font-family: var(--font-body-ar);
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+}
+
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] .font-display {
+  font-family: var(--font-display-ar);
+}
+
+/* Signature motif: thin gold corner frame, used on hero art & featured
+   product imagery — echoes the foil-stamped corner of a perfume box. */
+.gold-frame {
+  position: relative;
+}
+.gold-frame::before,
+.gold-frame::after {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--color-gold);
+  opacity: 0.85;
+  pointer-events: none;
+}
+.gold-frame::before {
+  top: -8px;
+  inset-inline-start: -8px;
+  border-inline-end: none;
+  border-bottom: none;
+}
+.gold-frame::after {
+  bottom: -8px;
+  inset-inline-end: -8px;
+  border-inline-start: none;
+  border-top: none;
+}
+
+/* Respect reduced motion everywhere */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
